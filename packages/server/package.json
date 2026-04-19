@@ -10,6 +10,8 @@
     "typescript": "^6.0.2"
   },
   "dependencies": {
-    "shared": "^0.2.0"
+    "@types/ws": "^8.18.1",
+    "shared": "^0.2.0",
+    "ws": "^8.20.0"
   }
 }
