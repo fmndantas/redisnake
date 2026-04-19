@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@types/ws": "^8.18.1",
-    "shared": "^0.2.0",
+    "shared": "workspace:*",
     "ws": "^8.20.0"
   }
 }

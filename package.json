@@ -11,6 +11,6 @@
   },
   "workspaces": [
     "packages/*",
-    "tests/*"
+    "tests"
   ]
 }
