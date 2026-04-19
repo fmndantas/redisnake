@@ -1,13 +1,30 @@
 import { WebSocketServer } from 'ws';
 
-console.log('Server is running');
+const FRAMES_PER_SECOND = 1
+
+console.log('Server is running (%d FPS)', FRAMES_PER_SECOND);
 
 const wss = new WebSocketServer({ port: 8080 });
 
-wss.on('connection', function connection(ws) {
-    ws.on('error', console.error)
+interface GameState {
+    currentTick: number;
+};
 
-    ws.on('message', function message(data) {
-        ws.send('[server] ack -> ' + data)
+const gameLoop = (state: GameState): GameState => {
+    return { currentTick: state.currentTick + 1 };
+};
+
+let currentGameState: GameState = {
+    currentTick: 1
+}
+
+wss.on('connection', ws => ws.on('error', console.error));
+
+const interval = setInterval(() => {
+    currentGameState = gameLoop(currentGameState);
+    wss.clients.forEach(ws => {
+        ws.send(JSON.stringify(currentGameState));
     });
-});
+}, 1000 / FRAMES_PER_SECOND);
+
+wss.on('close', () => clearInterval(interval));

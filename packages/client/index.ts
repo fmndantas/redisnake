@@ -6,9 +6,4 @@ const ws = new WebSocket('ws://localhost:8080');
 
 ws.on('error', console.error);
 
-ws.on('open', function() {
-    ws.send('something');
-});
-
-ws.on('message', function message(_) {
-})
+ws.on('message', data => console.debug('[client] -> %s', data));
