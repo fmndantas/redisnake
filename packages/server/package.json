@@ -13,5 +13,9 @@
     "@types/ws": "^8.18.1",
     "shared": "workspace:*",
     "ws": "^8.20.0"
+  },
+  "exports": {
+    ".": "./index.ts",
+    "./game-loop": "./game-loop.ts"
   }
 }

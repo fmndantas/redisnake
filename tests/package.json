@@ -4,7 +4,8 @@
   "type": "module",
   "private": true,
   "dependencies": {
-    "shared": "workspace:*"
+    "shared": "workspace:*",
+    "server": "workspace:*"
   },
   "devDependencies": {
     "@types/bun": "latest"
