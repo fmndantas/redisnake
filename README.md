@@ -1,15 +1,33 @@
 # redisnake
 
-To install dependencies:
+Toy game to study distributed computation and Redis.
+
+## How to run the application
+
+First, install dependencies:
 
 ```bash
 bun install
 ```
 
-To run:
+After, run the client and the server.
+
+### Client
 
 ```bash
+cd packages/client
 bun run index.ts
 ```
 
-This project was created using `bun init` in bun v1.3.12. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+### Server
+
+```bash
+cd packages/server
+bun run index.ts
+```
+
+## How to run tests
+
+```bash
+bun test
+```
