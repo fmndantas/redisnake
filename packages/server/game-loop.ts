@@ -29,11 +29,12 @@ export const updateFpsAwareEntity = <T>(
         };
 };
 
-const updateSnake = (currentTick: Tick, fpsSnake: FpsAwareEntity<Snake>) => updateFpsAwareEntity<Snake>(
-    SnakeFunctions.move,
-    currentTick,
-    fpsSnake
-);
+export const updateSnake = (currentTick: Tick, fpsSnake: FpsAwareEntity<Snake>) =>
+    updateFpsAwareEntity<Snake>(
+        SnakeFunctions.move,
+        currentTick,
+        fpsSnake
+    );
 
 export interface GameState {
     currentTick: number;
@@ -41,8 +42,9 @@ export interface GameState {
 };
 
 export const loop = (state: GameState): GameState => {
+    const nextTick = state.currentTick + 1;
     return {
-        currentTick: state.currentTick + 1,
-        snakes: state.snakes.map(s => updateSnake(state.currentTick, s))
+        currentTick: nextTick,
+        snakes: state.snakes.map(s => updateSnake(nextTick, s))
     };
 };
